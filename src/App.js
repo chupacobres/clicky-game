@@ -19,20 +19,21 @@ class App extends Component {
   shuffleScoreCard = id => {
     let clickedMonkeyIds = this.state.clickedMonkeyIds;
 
-    if(clickedMonkeyIds.includes(id)){
-      this.setState({ clickedMonkeyIds: [], score: 0, status:  "You clicked that monkey already! Game over!, Try again" });
+    if (clickedMonkeyIds.includes(id)) {
+      this.setState({ clickedMonkeyIds: [], score: 0, status: "You clicked that monkey already! Game over!, Try again" });
       return;
-    }else{
+    }
+    else {
       clickedMonkeyIds.push(id)
 
-      if(clickedMonkeyIds.length === 8){
-        this.setState({score: 8, status: "Good monkey! You won!", clickedMonkeyIds: []});
-        console.log('Game won');
+      if (clickedMonkeyIds.length === 8) {
+        this.setState({ score: 8, status: "Good monkey! You won!", clickedMonkeyIds: [] });
+        // console.log('Game won');
         return;
       }
 
       this.setState({ monkeys, clickedMonkeyIds, score: clickedMonkeyIds.length, status: " " });
-
+      //Suffle the array
       for (let i = monkeys.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [monkeys[i], monkeys[j]] = [monkeys[j], monkeys[i]];
@@ -51,9 +52,9 @@ class App extends Component {
           </p>
         </header>
         <Score total={this.state.score}
-               goal={8}
-               status={this.state.status}
-               />
+          goal={8}
+          status={this.state.status}
+        />
         <Wrapper>
           {this.state.monkeys.map(monkey => (
             <Card
@@ -67,7 +68,7 @@ class App extends Component {
         <footer>
           <p>Silly Code (c). My Github account:<a href="https://github.com/chupacobres/clicky-game" target="_blank" rel="noopener noreferrer"> here</a>.</p>
         </footer>
-    </div>
+      </div>
     );
   }
 }
