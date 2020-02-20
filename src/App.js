@@ -6,7 +6,7 @@ import monkeys from "./cards.json";
 import "./App.css";
 
 class App extends Component {
-  // Setting this.state.pups to the cards json array
+  // Setting this.state.monkeys to the cards json array
   state = {
     monkeys,
     clickedMonkeyIds: [],
